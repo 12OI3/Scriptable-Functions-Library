@@ -24,7 +24,7 @@ MonoBehaviour:
     Enable: 1
   - ID: D
     Assembly: D, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    Enable: 0
+    Enable: 1
   - ID: E
     Assembly: E, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     Enable: 1

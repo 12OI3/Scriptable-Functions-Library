@@ -109,9 +109,9 @@ namespace ScriptableFunctionsLibrary
             EditorGUILayout.Space(2f);
             EditorGUILayout.LabelField("Info", EditorStyles.boldLabel);
             EditorGUILayout.BeginVertical(EditorStyles.textArea);
-            EditorGUILayout.LabelField($"Currently Tool Version: {ScriptableFunctionsLibraryManager.VERSION}");
-            EditorGUILayout.LabelField($"Currently Register Functions: {this.LibrarySO.EditorGetPreset().Count}");
-            EditorGUILayout.LabelField($"Last Register Time: {EditorPrefs.GetString(ScriptableFunctionsLibraryManager.LAST_REGISTER_TIME_KEY)}");
+            EditorGUILayout.LabelField($"Version: {ScriptableFunctionsLibraryManager.VERSION}");
+            EditorGUILayout.LabelField($"Currently Register Functions: {(this.LibrarySO == null ? "N/A" : this.LibrarySO.EditorGetPreset().Count)}");
+            EditorGUILayout.LabelField($"Last Register Time: {(this.LibrarySO == null ? "N/A" : EditorPrefs.GetString(ScriptableFunctionsLibraryManager.LAST_REGISTER_TIME_KEY))}");
             EditorGUILayout.EndVertical();
             EditorGUILayout.Space(2f);
         }
