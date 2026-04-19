@@ -1,0 +1,17 @@
+{
+    "name": "com.robsayyes.scriptablefunctionslibrary",
+    "version": "0.1.1",
+    "displayName": "Scriptable Functions Library",
+    "description": "A tool that create a scriptable object, containing functions that can be called by string ID.",
+    "unity": "6.0",
+    "unityRelease": "64f1",
+    "keywords": [
+        "Scriptable Functions Library"
+      ],
+    "author": {
+      "name": "ROB",
+      "email": "benbook90@gmail.com",
+      "url": "https://12oi3.github.io/"
+    }
+  }
+  

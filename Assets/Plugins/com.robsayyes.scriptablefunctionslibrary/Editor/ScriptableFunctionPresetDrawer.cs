@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace ScriptableFunctionsLibrary
 {
-    
     public class ScriptableFunctionPresetDrawer : Editor
     {
         public static void Draw(SerializedProperty preset)
