@@ -32,7 +32,6 @@ namespace ScriptableFunctionsLibrary
         #region OnGUI Functions
 
         private Vector2 ScrollPosition;
-        private bool IsInfoFolded;
 
         void OnGUI()
 		{
@@ -109,13 +108,34 @@ namespace ScriptableFunctionsLibrary
         private void OnIntroductionGUI()
         {
             EditorGUILayout.Space(2f);
+            EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Info", EditorStyles.boldLabel);
+            this.OnGuideBtnGUI();
+            this.OnSettingsBtnGUI();
+            EditorGUILayout.EndHorizontal();
             EditorGUILayout.BeginVertical(EditorStyles.textArea);
             EditorGUILayout.LabelField($"Version: {ScriptableFunctionsLibraryManager.VERSION}");
             EditorGUILayout.LabelField($"Currently Register Functions: {(this.LibrarySO == null ? "N/A" : (this.LibrarySO.EditorGetPreset() == null ? "N/A" : this.LibrarySO.EditorGetPreset().Count))}");
             EditorGUILayout.LabelField($"Last Register Time: {(this.LibrarySO == null ? "N/A" : EditorPrefs.GetString(ScriptableFunctionsLibraryManager.LAST_REGISTER_TIME_KEY))}");
+            EditorGUILayout.LabelField($"Created by: ROBsayYes");
             EditorGUILayout.EndVertical();
             EditorGUILayout.Space(2f);
+        }
+
+        private void OnGuideBtnGUI()
+        {
+            if (GUILayout.Button("Guide"))
+            {
+                ScriptableFunctionsLibraryGuideEditor.ShowWindow();
+            }
+        }
+
+        private void OnSettingsBtnGUI()
+        {
+            if (GUILayout.Button("Settings"))
+            {
+                ScriptableFunctionsLibrarySettingsEditor.ShowWindow();
+            }
         }
 
         private void OnLibraryGUI()
