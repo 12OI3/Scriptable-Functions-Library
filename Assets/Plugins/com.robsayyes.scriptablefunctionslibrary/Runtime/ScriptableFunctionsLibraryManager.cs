@@ -6,7 +6,7 @@ namespace ScriptableFunctionsLibrary
     public abstract class ScriptableFunctionsLibraryManager
     {
 
-        public const string VERSION = "0.1.3";
+        public const string VERSION = "0.1.4";
         public const string LAST_REGISTER_TIME_KEY = "ScriptableFunctionsLibrary: Last Register Time";
         public const string ASSETS_PATH = "Assets";
         public const string RESOURCES_PATH = "Resources";

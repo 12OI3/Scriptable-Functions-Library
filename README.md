@@ -1,4 +1,4 @@
-# Scriptable-Functions-Library V 0.1.3
+# Scriptable-Functions-Library V 0.1.4
 Scriptable Functions Library is a tool that generates a ScriptableObject used to register and manage callable functions by string ID.
 
 UPM git url: https://github.com/12OI3/Scriptable-Functions-Library.git?path=/Assets/Plugins/com.robsayyes.scriptablefunctionslibrary
