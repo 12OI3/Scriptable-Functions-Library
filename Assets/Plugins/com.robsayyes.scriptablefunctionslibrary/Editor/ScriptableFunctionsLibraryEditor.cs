@@ -89,6 +89,8 @@ namespace ScriptableFunctionsLibrary
                         EditorUtility.FocusProjectWindow();
                         Selection.activeObject = this.LibrarySO;
                         AssetDatabase.Refresh();
+
+                        UpdateLibrary();
                     }
                 }
             }
@@ -110,7 +112,7 @@ namespace ScriptableFunctionsLibrary
             EditorGUILayout.LabelField("Info", EditorStyles.boldLabel);
             EditorGUILayout.BeginVertical(EditorStyles.textArea);
             EditorGUILayout.LabelField($"Version: {ScriptableFunctionsLibraryManager.VERSION}");
-            EditorGUILayout.LabelField($"Currently Register Functions: {(this.LibrarySO == null ? "N/A" : this.LibrarySO.EditorGetPreset().Count)}");
+            EditorGUILayout.LabelField($"Currently Register Functions: {(this.LibrarySO == null ? "N/A" : (this.LibrarySO.EditorGetPreset() == null ? "N/A" : this.LibrarySO.EditorGetPreset().Count))}");
             EditorGUILayout.LabelField($"Last Register Time: {(this.LibrarySO == null ? "N/A" : EditorPrefs.GetString(ScriptableFunctionsLibraryManager.LAST_REGISTER_TIME_KEY))}");
             EditorGUILayout.EndVertical();
             EditorGUILayout.Space(2f);
@@ -171,8 +173,11 @@ namespace ScriptableFunctionsLibrary
                 return;
 
             Dictionary<string, ScriptableFunctionPreset> previous = new();
-            foreach(ScriptableFunctionPreset preset in so.EditorGetPreset())
-                previous.Add(preset.ID, preset);
+            if(so.EditorGetPreset() != null)
+            {
+                foreach(ScriptableFunctionPreset preset in so.EditorGetPreset())
+                    previous.Add(preset.ID, preset);
+            }
 
             so.EditorResetPreset();
         
