@@ -224,5 +224,24 @@ namespace ScriptableFunctionsLibrary
             Debug.Log($"Scriptable Function Library: Library update, register {count} functions");
             EditorPrefs.SetString(ScriptableFunctionsLibraryManager.LAST_REGISTER_TIME_KEY, DateTime.Now.ToString());
         }
+
+        public static void DeleteLibrary()
+        {
+            
+            ScriptableFunctionsLibrarySO so = TryGetScriptableFunctionsLibrarySO();
+            if(so == null)
+                return;
+
+            string assets = ScriptableFunctionsLibraryManager.ASSETS_PATH;
+            string resources = ScriptableFunctionsLibraryManager.RESOURCES_PATH;
+            string folder = ScriptableFunctionsLibraryManager.FOLDER_PATH;
+            string name = ScriptableFunctionsLibraryManager.OBJECT_NAME;
+            string path = $"{assets}/{resources}/{folder}/{name}.asset";
+            if (AssetDatabase.AssetPathExists(path))
+            {
+                AssetDatabase.DeleteAsset(path);
+                AssetDatabase.Refresh();
+            }
+        }
     }
 }
