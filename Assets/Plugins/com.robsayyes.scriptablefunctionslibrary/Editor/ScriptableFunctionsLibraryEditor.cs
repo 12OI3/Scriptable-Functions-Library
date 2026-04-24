@@ -161,8 +161,8 @@ namespace ScriptableFunctionsLibrary
             if (obj.ApplyModifiedProperties())
             {
                 EditorUtility.SetDirty(this.LibrarySO);
-                    AssetDatabase.SaveAssets();
-                    AssetDatabase.Refresh();
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
             }
             
             EditorGUILayout.Space(2f);
