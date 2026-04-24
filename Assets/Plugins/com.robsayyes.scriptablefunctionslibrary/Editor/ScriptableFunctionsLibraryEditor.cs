@@ -58,7 +58,7 @@ namespace ScriptableFunctionsLibrary
             GUILayout.FlexibleSpace();
             this.OnCreateOrDeleteLibraryGUI();
             this.OnGuideBtnGUI();
-            this.OnSettingsBtnGUI();
+            // this.OnSettingsBtnGUI();
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.BeginVertical(EditorStyles.textArea);
             EditorGUILayout.LabelField($"Version: {ScriptableFunctionsLibraryManager.VERSION}");
