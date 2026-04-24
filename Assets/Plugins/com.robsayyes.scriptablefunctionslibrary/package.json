@@ -1,6 +1,6 @@
 {
     "name": "com.robsayyes.scriptablefunctionslibrary",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "displayName": "Scriptable Functions Library",
     "description": "A tool that create a scriptable object, containing functions that can be called by string ID.",
     "unity": "6.0",
