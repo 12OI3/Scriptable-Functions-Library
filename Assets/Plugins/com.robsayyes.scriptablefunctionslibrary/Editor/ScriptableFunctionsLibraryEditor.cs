@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
@@ -217,7 +218,9 @@ namespace ScriptableFunctionsLibrary
             if(so.EditorGetPreset() != null)
             {
                 foreach(ScriptableFunctionPreset preset in so.EditorGetPreset())
+                {
                     previous.Add(preset.ID, preset);
+                }
             }
 
             so.EditorResetPreset();
@@ -231,7 +234,12 @@ namespace ScriptableFunctionsLibrary
             {
                 count++;
                 if (previous.ContainsKey(type.Name))
-                    so.EditorSetPreset(previous[type.Name]);
+                {
+                    ScriptableFunctionPreset exist = previous[type.Name];
+                    exist.ToolTip = type.GetCustomAttribute<TooltipAttribute>()?.tooltip;
+                    exist.ToolTip = exist.ToolTip == null ? "" : exist.ToolTip;
+                    so.EditorSetPreset(exist);
+                }
                 else
                 {
                     so.EditorSetPreset(type);

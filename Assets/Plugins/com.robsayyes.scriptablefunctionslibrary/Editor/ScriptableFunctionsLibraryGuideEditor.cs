@@ -29,7 +29,7 @@ namespace ScriptableFunctionsLibrary
             EditorGUILayout.LabelField($"At runtime, you can access and execute the function like this:", EditorStyles.wordWrappedLabel);
             EditorGUILayout.LabelField($"void Start()\n{{\n     (ScriptableFunctionsLibraryManager.Library[DemoFunction] as DemoFunction).Execute();\n}}", EditorStyles.wordWrappedLabel);
             EditorGUILayout.LabelField($"It is recommended to create an abstract class that inherits from \"ScriptableFunction\", and then have your concrete function classes inherit from that abstract base. This allows you to define shared structure and logic in one place, while derived classes handle specific behavior and parameters. The structure also supports async/await, allowing you to implement asynchronous functions within your classes.", EditorStyles.wordWrappedLabel);
-            EditorGUILayout.LabelField($"In the editor window, you can view basic information and all registered functions, as well as enable or disable them as needed. More features will be added in future updates.", EditorStyles.wordWrappedLabel);
+            EditorGUILayout.LabelField($"In the editor window, you can view basic information and all registered functions, as well as enable or disable them as needed. You can also add ToolTip for your class, which will be shown on the library tool, too More features will be added in future updates.", EditorStyles.wordWrappedLabel);
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndVertical();
             EditorGUILayout.EndScrollView();

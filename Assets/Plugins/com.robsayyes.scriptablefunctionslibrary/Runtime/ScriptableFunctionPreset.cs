@@ -9,5 +9,6 @@ namespace ScriptableFunctionsLibrary
         public string ID;
         public string Assembly;
         public bool Enable;
+        public string ToolTip;
     }
 }

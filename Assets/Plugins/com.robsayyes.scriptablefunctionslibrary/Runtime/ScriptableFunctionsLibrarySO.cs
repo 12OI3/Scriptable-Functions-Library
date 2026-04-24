@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 namespace ScriptableFunctionsLibrary
@@ -28,6 +29,7 @@ namespace ScriptableFunctionsLibrary
         
         public void EditorResetPreset() => this.ScriptableFunctionPresets = new();
         public List<ScriptableFunctionPreset> EditorGetPreset() => this.ScriptableFunctionPresets;
+
         public void EditorSetPreset(Type _type)
         {
             
@@ -35,7 +37,8 @@ namespace ScriptableFunctionsLibrary
             preset.ID = _type.Name;
             preset.Enable = true;
             preset.Assembly = _type.AssemblyQualifiedName;
-
+            preset.ToolTip = _type.GetCustomAttribute<TooltipAttribute>()?.tooltip;
+            preset.ToolTip = preset.ToolTip == null ? "" : preset.ToolTip;
             this.ScriptableFunctionPresets.Add(preset);
         }
 
