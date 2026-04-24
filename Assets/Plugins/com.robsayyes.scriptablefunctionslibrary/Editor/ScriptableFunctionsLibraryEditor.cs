@@ -55,10 +55,11 @@ namespace ScriptableFunctionsLibrary
             EditorGUILayout.Space(2f);
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Info", EditorStyles.boldLabel,  GUILayout.Width(60));
-            GUILayout.FlexibleSpace();
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.Space();
             this.OnCreateOrDeleteLibraryGUI();
             this.OnGuideBtnGUI();
-            // this.OnSettingsBtnGUI();
+            EditorGUILayout.EndHorizontal();
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.BeginVertical(EditorStyles.textArea);
             EditorGUILayout.LabelField($"Version: {ScriptableFunctionsLibraryManager.VERSION}");
@@ -78,6 +79,8 @@ namespace ScriptableFunctionsLibrary
             string name = ScriptableFunctionsLibraryManager.OBJECT_NAME;
             string path = $"{assets}/{resources}/{folder}/{name}.asset";
 
+            bool isCreateOrDelete = false;
+
             if(this.LibrarySO == null)
             {
                 if(path != "" && File.Exists(path) == true)
@@ -86,35 +89,44 @@ namespace ScriptableFunctionsLibrary
                 }
                 else
                 {
-                    if(GUILayout.Button("Create Library",  GUILayout.Width(120)))
-                    {
-
-                        if(AssetDatabase.IsValidFolder($"{assets}/{resources}") == false)
-                        {
-                            AssetDatabase.CreateFolder(assets, resources);
-                            AssetDatabase.Refresh();
-                        }
-                        
-                        if(AssetDatabase.IsValidFolder($"{assets}/{resources}/{folder}") == false)
-                        {
-                            AssetDatabase.CreateFolder($"{assets}/{resources}", folder);
-                            AssetDatabase.Refresh();
-                        }
-                        this.LibrarySO = CreateInstance<ScriptableFunctionsLibrarySO>();
-                        AssetDatabase.CreateAsset(this.LibrarySO, path);
-                        AssetDatabase.SaveAssetIfDirty(this.LibrarySO);
-                        EditorUtility.FocusProjectWindow();
-                        Selection.activeObject = this.LibrarySO;
-                        AssetDatabase.Refresh();
-                        UpdateLibrary();
-                    }
+                    isCreateOrDelete = true;
                 }
             }
-            else if(GUILayout.Button("Delete Library",  GUILayout.Width(120)))
-            {
-                ScriptableFunctionsLibraryDeleteEditor.ShowWindow();
-            }
             
+            if(isCreateOrDelete)
+            {
+                
+                if(GUILayout.Button("Create Library",  GUILayout.Width(120)))
+                {
+
+                    if(AssetDatabase.IsValidFolder($"{assets}/{resources}") == false)
+                    {
+                        AssetDatabase.CreateFolder(assets, resources);
+                        AssetDatabase.Refresh();
+                    }
+                    
+                    if(AssetDatabase.IsValidFolder($"{assets}/{resources}/{folder}") == false)
+                    {
+                        AssetDatabase.CreateFolder($"{assets}/{resources}", folder);
+                        AssetDatabase.Refresh();
+                    }
+                    this.LibrarySO = CreateInstance<ScriptableFunctionsLibrarySO>();
+                    AssetDatabase.CreateAsset(this.LibrarySO, path);
+                    AssetDatabase.SaveAssetIfDirty(this.LibrarySO);
+                    EditorUtility.FocusProjectWindow();
+                    Selection.activeObject = this.LibrarySO;
+                    AssetDatabase.Refresh();
+                    UpdateLibrary();
+                }
+            }
+            else
+            {
+                
+                if(GUILayout.Button("Delete Library",  GUILayout.Width(120)))
+                {
+                    ScriptableFunctionsLibraryDeleteEditor.ShowWindow();
+                }
+            }
         }
 
         public void OnDeleteBtnGUI()
