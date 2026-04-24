@@ -54,7 +54,8 @@ namespace ScriptableFunctionsLibrary
         {
             EditorGUILayout.Space(2f);
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Info", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Info", EditorStyles.boldLabel,  GUILayout.Width(60));
+            GUILayout.FlexibleSpace();
             this.OnCreateOrDeleteLibraryGUI();
             this.OnGuideBtnGUI();
             this.OnSettingsBtnGUI();
@@ -85,7 +86,7 @@ namespace ScriptableFunctionsLibrary
                 }
                 else
                 {
-                    if(GUILayout.Button("Create Library"))
+                    if(GUILayout.Button("Create Library",  GUILayout.Width(120)))
                     {
 
                         if(AssetDatabase.IsValidFolder($"{assets}/{resources}") == false)
@@ -109,7 +110,7 @@ namespace ScriptableFunctionsLibrary
                     }
                 }
             }
-            else if(GUILayout.Button("Delete Library"))
+            else if(GUILayout.Button("Delete Library",  GUILayout.Width(120)))
             {
                 ScriptableFunctionsLibraryDeleteEditor.ShowWindow();
             }
@@ -132,7 +133,7 @@ namespace ScriptableFunctionsLibrary
 
         private void OnGuideBtnGUI()
         {
-            if (GUILayout.Button("Guide"))
+            if (GUILayout.Button("Guide",  GUILayout.Width(80)))
             {
                 ScriptableFunctionsLibraryGuideEditor.ShowWindow();
             }
@@ -140,7 +141,7 @@ namespace ScriptableFunctionsLibrary
 
         private void OnSettingsBtnGUI()
         {
-            if (GUILayout.Button("Settings"))
+            if (GUILayout.Button("Settings",  GUILayout.Width(80)))
             {
                 ScriptableFunctionsLibrarySettingsEditor.ShowWindow();
             }

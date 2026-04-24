@@ -8,12 +8,13 @@ namespace ScriptableFunctionsLibrary
 
         public static void ShowWindow()
         {
-            GetWindow(typeof(ScriptableFunctionsLibraryDeleteEditor), false, "Delete Library");	
+            EditorWindow window = GetWindowWithRect(typeof(ScriptableFunctionsLibraryDeleteEditor), new Rect(0f, 0f, 200f, 50f), false, "Delete Library");	
         }
         
         void OnGUI()
         {
             
+            EditorGUILayout.Space(4f);
             EditorGUILayout.LabelField("Are you sure?", EditorStyles.boldLabel);
             EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("YES"))
@@ -26,6 +27,7 @@ namespace ScriptableFunctionsLibrary
                 this.Close();
             }
             EditorGUILayout.EndHorizontal();
+            EditorGUILayout.Space(4f);
         }
     }
 }
