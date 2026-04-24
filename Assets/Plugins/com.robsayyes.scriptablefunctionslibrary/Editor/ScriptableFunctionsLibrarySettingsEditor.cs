@@ -17,20 +17,11 @@ namespace ScriptableFunctionsLibrary
         {
             
             this.ScrollPosition = EditorGUILayout.BeginScrollView(this.ScrollPosition);
-            this.OnDeleteBtnGUI();
             EditorGUILayout.BeginVertical(EditorStyles.textArea);
             EditorGUILayout.LabelField($"WIP", EditorStyles.wordWrappedLabel);
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndVertical();
             EditorGUILayout.EndScrollView();
-        }
-
-        public void OnDeleteBtnGUI()
-        {
-            if(GUILayout.Button("Delete Library"))
-            {
-                ScriptableFunctionsLibraryDeleteEditor.ShowWindow();
-            }
         }
     }
 }

@@ -43,7 +43,6 @@ namespace ScriptableFunctionsLibrary
             
 			this.ScrollPosition = EditorGUILayout.BeginScrollView(this.ScrollPosition);
 
-            this.OnCreateLibraryGUI();
             // this.OnUpdateLibraryGUI();
             this.OnIntroductionGUI();
             this.OnLibraryGUI();
@@ -51,7 +50,25 @@ namespace ScriptableFunctionsLibrary
 			EditorGUILayout.EndScrollView();
 		}
 
-        private void OnCreateLibraryGUI()
+        private void OnIntroductionGUI()
+        {
+            EditorGUILayout.Space(2f);
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Info", EditorStyles.boldLabel);
+            this.OnCreateOrDeleteLibraryGUI();
+            this.OnGuideBtnGUI();
+            this.OnSettingsBtnGUI();
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginVertical(EditorStyles.textArea);
+            EditorGUILayout.LabelField($"Version: {ScriptableFunctionsLibraryManager.VERSION}");
+            EditorGUILayout.LabelField($"Currently Register Functions: {(this.LibrarySO == null ? "N/A" : (this.LibrarySO.EditorGetPreset() == null ? "N/A" : this.LibrarySO.EditorGetPreset().Count))}");
+            EditorGUILayout.LabelField($"Last Register Time: {(this.LibrarySO == null ? "N/A" : EditorPrefs.GetString(ScriptableFunctionsLibraryManager.LAST_REGISTER_TIME_KEY))}");
+            EditorGUILayout.LabelField($"Created by: ROBsayYes");
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.Space(2f);
+        }
+
+        private void OnCreateOrDeleteLibraryGUI()
         {
             
             string assets = ScriptableFunctionsLibraryManager.ASSETS_PATH;
@@ -88,11 +105,19 @@ namespace ScriptableFunctionsLibrary
                         EditorUtility.FocusProjectWindow();
                         Selection.activeObject = this.LibrarySO;
                         AssetDatabase.Refresh();
-
                         UpdateLibrary();
                     }
                 }
             }
+            else if(GUILayout.Button("Delete Library"))
+            {
+                ScriptableFunctionsLibraryDeleteEditor.ShowWindow();
+            }
+            
+        }
+
+        public void OnDeleteBtnGUI()
+        {
         }
         
         private void OnUpdateLibraryGUI()
@@ -103,23 +128,6 @@ namespace ScriptableFunctionsLibrary
 
             if(GUILayout.Button("Update Library"))
                 UpdateLibrary();
-        }
-
-        private void OnIntroductionGUI()
-        {
-            EditorGUILayout.Space(2f);
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Info", EditorStyles.boldLabel);
-            this.OnGuideBtnGUI();
-            this.OnSettingsBtnGUI();
-            EditorGUILayout.EndHorizontal();
-            EditorGUILayout.BeginVertical(EditorStyles.textArea);
-            EditorGUILayout.LabelField($"Version: {ScriptableFunctionsLibraryManager.VERSION}");
-            EditorGUILayout.LabelField($"Currently Register Functions: {(this.LibrarySO == null ? "N/A" : (this.LibrarySO.EditorGetPreset() == null ? "N/A" : this.LibrarySO.EditorGetPreset().Count))}");
-            EditorGUILayout.LabelField($"Last Register Time: {(this.LibrarySO == null ? "N/A" : EditorPrefs.GetString(ScriptableFunctionsLibraryManager.LAST_REGISTER_TIME_KEY))}");
-            EditorGUILayout.LabelField($"Created by: ROBsayYes");
-            EditorGUILayout.EndVertical();
-            EditorGUILayout.Space(2f);
         }
 
         private void OnGuideBtnGUI()
