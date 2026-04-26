@@ -1,44 +1,73 @@
 using UnityEngine;
 using ScriptableFunctionsLibrary;
+using System.Threading.Tasks;
 
 public class Demo : MonoBehaviour
 {
-    
+    void Start()
+    {
+        (ScriptableFunctionsLibraryManager.Library["DemoFunction"] as DemoFunction).Execute();
+    }
 }
 
-public abstract class DemoFunction : ScriptableFunction
+public class DemoFunction : ScriptableFunction
 {
-
-
+    public void Execute()
+    {
+        Debug.Log("Hello World!");
+    }
 }
 
-[Tooltip("A test class")]
-public class A : DemoFunction
+[Tooltip("This will print Hello World!")]
+public class DemoToolTipFunction : ScriptableFunction
 {
-    
+    public void Execute()
+    {
+        Debug.Log("Hello World!");
+    }
 }
 
-[Tooltip("B test class")]
-
-public class B : DemoFunction
+public abstract class NumberFunction : ScriptableFunction
 {
-    
+    public abstract int Number { get;}
+    public void PrintNumber()
+    {
+        Debug.Log(Number);
+    }
 }
 
-[Tooltip("C test class")]
-
-public class C : DemoFunction
+public class One : NumberFunction
 {
-    
+    public override int Number => 1;
 }
 
-[Tooltip("123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A")]
-public class E : DemoFunction
+public class Two : NumberFunction
 {
-    
+    public override int Number => 2;
 }
 
-public class D : DemoFunction
+public class Three : NumberFunction
 {
-    
+    public override int Number => 3;
+}
+
+public abstract class AsyncFunction : ScriptableFunction
+{
+    public abstract Task Execute();
+}
+
+public class IsAsyncFunction : AsyncFunction
+{
+    public override async Task Execute()
+    {
+        await Task.Delay(1000);
+    }
+}
+
+public class IsNotAsyncFunction : AsyncFunction
+{
+    public override Task Execute()
+    {
+        return Task.CompletedTask;
+    }
 }

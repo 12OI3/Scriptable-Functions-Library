@@ -148,7 +148,8 @@ namespace ScriptableFunctionsLibrary
         {
             if (GUILayout.Button("Guide",  GUILayout.Width(80)))
             {
-                ScriptableFunctionsLibraryGuideEditor.ShowWindow();
+                // ScriptableFunctionsLibraryGuideEditor.ShowWindow();
+                Application.OpenURL("https://github.com/12OI3/Scriptable-Functions-Library");
             }
         }
 

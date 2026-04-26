@@ -13,23 +13,34 @@ MonoBehaviour:
   m_Name: ScriptableFunctionsLibrary
   m_EditorClassIdentifier: 
   ScriptableFunctionPresets:
-  - ID: A
-    Assembly: A, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - ID: DemoFunction
+    Assembly: DemoFunction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     Enable: 1
-    ToolTip: A test class
-  - ID: B
-    Assembly: B, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    ToolTip: 
+  - ID: DemoToolTipFunction
+    Assembly: DemoToolTipFunction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
     Enable: 1
-    ToolTip: B test class
-  - ID: C
-    Assembly: C, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    ToolTip: This will print Hello World!
+  - ID: One
+    Assembly: One, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     Enable: 1
-    ToolTip: C test class
-  - ID: E
-    Assembly: E, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    ToolTip: 
+  - ID: Two
+    Assembly: Two, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     Enable: 1
-    ToolTip: 123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A123A
-  - ID: D
-    Assembly: D, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    ToolTip: 
+  - ID: Three
+    Assembly: Three, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    Enable: 1
+    ToolTip: 
+  - ID: IsAsyncFunction
+    Assembly: IsAsyncFunction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    Enable: 1
+    ToolTip: 
+  - ID: IsNotAsyncFunction
+    Assembly: IsNotAsyncFunction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
     Enable: 1
     ToolTip: 
