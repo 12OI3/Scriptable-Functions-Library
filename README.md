@@ -1,4 +1,4 @@
-# Scriptable-Functions-Library V 0.1.5
+# Scriptable-Functions-Library V 0.1.6
 Scriptable Functions Library is a Unity tool that generates a ScriptableObject used to register and manage callable functions via string IDs.
 
 UPM Git URL: https://github.com/12OI3/Scriptable-Functions-Library.git?path=/Assets/Plugins/com.robsayyes.scriptablefunctionslibrary
