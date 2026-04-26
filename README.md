@@ -1,17 +1,25 @@
 # Scriptable-Functions-Library V 0.1.5
-Scriptable Functions Library is a tool that generates a ScriptableObject used to register and manage callable functions by string ID.
+Scriptable Functions Library is a Unity tool that generates a ScriptableObject used to register and manage callable functions via string IDs.
 
-UPM git url: https://github.com/12OI3/Scriptable-Functions-Library.git?path=/Assets/Plugins/com.robsayyes.scriptablefunctionslibrary
+UPM Git URL: https://github.com/12OI3/Scriptable-Functions-Library.git?path=/Assets/Plugins/com.robsayyes.scriptablefunctionslibrary
 
 # Introduction
+Scriptable Functions Library provides a lightweight way to organize and invoke functions using string ID. It is flexible enough to support various use cases. This tool is particularly suitable for technical designers or developers comfortable with minor code integration, as some parameters must still be defined in code. This system is also designed primarily for prototyping. It may not scale efficiently for large production systems.
 
-Scriptable Functions Library is a tool that generates a ScriptableObject used to register and manage callable functions by string ID. It can support a variety of use cases, but it is a relatively simple strucutre to use. It is better suited for technical designers, as some parameters may need to be defined directly in code. This structure is not recommended for production environments, as it may not scale well for larger systems. However, it is very useful during prototyping, helping you avoid large switch-case statements and making function organization more manageable.
+That said, it helps:
+- Avoid large switch-case statements
+- Centralize function management
+- Improve iteration speed during development
 
 # Basic Utilities
 
-You can click "Window > Scriptable Functions Library " in the menu to open the tool window. In order to use the tool, you will have to create library. An scriptable object will be created under the resource folde after you press the button, and every preset data will be stored here and utilize during runtime. It is important NOT to change the name and the path of the library.
+Open the tool via: "Window > Scriptable Functions Library" in the menu.
 
-This tool automatically registers all non-abstract classes that inherit from "ScriptableFunction". For example, you might define a function like this:
+In order to use the tool, you will have to create library. A scriptable object will be created under the resource folde, and this asset stores all preset data and is used at runtime.
+
+Do not rename or move this asset. Its path is required for proper functionality.
+
+The system automatically registers all non-abstract classes that inherit from ScriptableFunction. For example:
 
 ```csharp
 
@@ -36,7 +44,9 @@ public class DemoFunction : ScriptableFunction
 
 ```
 
-In this case, DemoFunction class will be searched and automatically register into the library. You can see the full list of the class on the tool window. Pressing the button can decide either enable or disable the class during runtime. The tool also support Unity;s Tooltip. You can add tool tip on each of the item in the library like following code:
+DemoFunction is automatically detected and registered. You can check out all classes via the tool window, and enable/disable it in runtime.
+
+You can add tooltips using Unity’s Tooltip attribute:
 
 ```csharp
 
@@ -54,9 +64,13 @@ public class DemoToolTipFunction : ScriptableFunction
 
 ```
 
+These tooltips will appear in the editor for better readability.
+
 # Abstract Usages
 
-Since the tool will ignore all abstract class, it is recommand to implment base functions and parameters first with an abstract class inherits from ScriptableFunction, then having more class inherit from that abstract class. For example
+Abstract classes are ignored during registration, making them ideal for defining shared logic or parameters.
+
+It is recommand to create an abstract base class that implement shared behavior, then having more class inherit from it.
 
 ```csharp
 
@@ -92,7 +106,7 @@ public class Three : NumberFunction
 
 # Async/Await
 
-This strcuture tool support Async/Await! Check the following example:
+This library support Async/Await:
 
 ``` csharp
 
