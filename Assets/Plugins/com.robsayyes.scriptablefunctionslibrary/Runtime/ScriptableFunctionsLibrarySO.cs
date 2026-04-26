@@ -7,8 +7,16 @@ namespace ScriptableFunctionsLibrary
 {
     public class ScriptableFunctionsLibrarySO : ScriptableObject
     {
+
+        /// <summary>
+        /// Presets list
+        /// </summary>
         public List<ScriptableFunctionPreset> ScriptableFunctionPresets;
 
+        /// <summary>
+        /// Init function, basically will recreate all instance based on preset and return a dictionary based on class name
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<string, ScriptableFunction> Init()
         {
             
@@ -27,9 +35,21 @@ namespace ScriptableFunctionsLibrary
             return dict;
         }
         
+        /// <summary>
+        /// Reset presets list
+        /// </summary>
         public void EditorResetPreset() => this.ScriptableFunctionPresets = new();
+
+        /// <summary>
+        /// Get presets list
+        /// </summary>
+        /// <returns></returns>
         public List<ScriptableFunctionPreset> EditorGetPreset() => this.ScriptableFunctionPresets;
 
+        /// <summary>
+        /// Add preset to list (by type)
+        /// </summary>
+        /// <param name="_type"></param>
         public void EditorSetPreset(Type _type)
         {
             
@@ -42,6 +62,10 @@ namespace ScriptableFunctionsLibrary
             this.ScriptableFunctionPresets.Add(preset);
         }
 
+        /// <summary>
+        /// Add preset to list (by preset struct)
+        /// </summary>
+        /// <param name="_preset"></param>
         public void EditorSetPreset(ScriptableFunctionPreset _preset)
         {
 

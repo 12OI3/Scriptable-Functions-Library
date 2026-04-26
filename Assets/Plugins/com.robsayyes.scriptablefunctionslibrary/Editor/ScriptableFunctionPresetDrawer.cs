@@ -3,17 +3,22 @@ using UnityEngine;
 
 namespace ScriptableFunctionsLibrary
 {
+    /// <summary>
+    /// Drawer for each scriptable function item based on preset recieved
+    /// </summary>
     public class ScriptableFunctionPresetDrawer : Editor
     {
         public static void Draw(SerializedProperty preset)
         {
-
+            
+            // Get attributes
             string name = preset.FindPropertyRelative("ID").stringValue;
             bool enable = preset.FindPropertyRelative("Enable").boolValue;
             string tip = preset.FindPropertyRelative("ToolTip").stringValue;
 
             EditorGUILayout.BeginHorizontal();
 
+            // Draw active/inactive btn
             Color originalColor = GUI.color;
             if(!enable)
                 GUI.color = Color.gray; 
@@ -23,19 +28,11 @@ namespace ScriptableFunctionsLibrary
             }
             GUI.color = originalColor;
 
+            // Draw label and tool tip
             EditorGUILayout.LabelField(name, GUILayout.ExpandWidth(true));
             var style = EditorStyles.textArea;
             style.wordWrap = false;
             EditorGUILayout.LabelField(new GUIContent(tip, tip == "" ? "" : tip + " "), style, GUILayout.Width(80));
-            // Rect rect = EditorGUILayout.GetControlRect(GUILayout.Width(80));
-            // EditorGUI.TextArea(rect, tip);
-            // Event e = Event.current;
-            // bool isHovering = rect.Contains(e.mousePosition);
-            // if (isHovering)
-            // {
-            //     GUILayout.Label(tip);
-            // }
-            // EditorGUILayout.TextArea(tip, GUILayout.Width(80));
 
             EditorGUILayout.EndHorizontal();
         }

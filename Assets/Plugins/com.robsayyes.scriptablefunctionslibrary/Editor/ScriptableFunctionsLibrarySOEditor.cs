@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace ScriptableFunctionsLibrary
 {
+    
+    /// <summary>
+    /// Scriptable object editor window, mainly just override the datas and pointing out the tool window
+    /// </summary>
     [CustomEditor(typeof(ScriptableFunctionsLibrarySO))]
     public class ScriptableFunctionsLibrarySOEditor : Editor
     {

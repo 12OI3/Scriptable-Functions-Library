@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace ScriptableFunctionsLibrary
 {
+
+    /// <summary>
+    /// Delete double editor window
+    /// </summary>
     public class ScriptableFunctionsLibraryDeleteEditor : EditorWindow
     {
 
@@ -14,6 +18,7 @@ namespace ScriptableFunctionsLibrary
         void OnGUI()
         {
             
+            // Draw questions, and two answer btns
             EditorGUILayout.Space(4f);
             EditorGUILayout.LabelField("Are you sure?", EditorStyles.boldLabel);
             EditorGUILayout.BeginHorizontal();

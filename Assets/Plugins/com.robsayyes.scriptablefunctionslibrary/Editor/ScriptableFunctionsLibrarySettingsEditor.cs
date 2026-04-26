@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace ScriptableFunctionsLibrary
 {
+    
+    /// <summary>
+    /// Settings editor window
+    /// </summary>
     public class ScriptableFunctionsLibrarySettingsEditor : EditorWindow
     {
 

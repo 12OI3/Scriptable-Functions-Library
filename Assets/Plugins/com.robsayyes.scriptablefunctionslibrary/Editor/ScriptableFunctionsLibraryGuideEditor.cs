@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace ScriptableFunctionsLibrary
 {
+
+    /// <summary>
+    /// Guide editor window
+    /// </summary>
     public class ScriptableFunctionsLibraryGuideEditor : EditorWindow
     {
 
